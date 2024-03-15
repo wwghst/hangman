@@ -7,63 +7,84 @@
 .wrapper{
     background-image: url(../img/bg.png);
     background-repeat: no-repeat;
-    background-size: cover
+    background-size: cover;
+   
 }
 .main{
     width: 100%;
 
+    &__canvas{
+        position: absolute;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+    }
+
+    &__car__headlight{
+        position: absolute;
+        z-index: 2;
+        background-color: rgb(255, 255, 255);
+        right: 111.6vh;
+        top: 54vh;
+        width: 12.5px;
+        height: 9px;
+        border-radius: 20%;
+        box-shadow: 0 0 10px 5px rgb(255, 255, 255);
+        transform: all 1s ease-in-out;
+    }
+    &__car__headlight--right{
+        right: 120.9vh;
+        top: 54vh;
+    }
+
+    &__car__headlight--active{
+        box-shadow: 0 0 100px 30px rgb(255, 255, 255);
+    }
+
     &__gallows{
         width: 5vh;
         position: absolute;
-        z-index: 2;
         right: 96.3vh;
         top: 10vh;
     }
-    &__guy{
-        position: relative;
-        display: none;
-    }
-
     &__guy__item{ 
         width: 6vh;
+        filter: brightness(60%);
     }
     &__guy__item--head{
         position: absolute;
-        z-index: 3;
         right: 96.2vh;
         top: 19.5vh;
     }
     &__guy__item--body{
         position: absolute;
-        z-index: 3;
         right: 95.4vh;
         top: 28.2vh;
     }
     &__guy__item--leftHand{
         width: 3.5vh;
         position: absolute;
-        z-index: 3;
         right: 98.9vh;
         top: 28.1vh;
     }
     &__guy__item--rightHand{
         width: 3vh;
         position: absolute;
-        z-index: 3;
         right: 94.6vh;
         top: 27.9vh;
     }
     &__guy__item--leftLeg{
         width: 3vh;
         position: absolute;
-        z-index: 3;
         right: 98.3vh;
         top: 37.6vh;
     }
     &__guy__item--rightLeg{
         width: 3vh;
         position: absolute;
-        z-index: 3;
         right: 95.4vh;
         top: 37.6vh;
 }
