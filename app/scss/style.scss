@@ -25,6 +25,23 @@
         gap: 20vh;
         z-index: 2;
         transform: all 0.5s;
+
+    }
+
+    &__words{
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+        color: rgb(255, 255, 255);
+        gap: 5vh;
+        font-size: 4vh;
+        position: absolute;
+        bottom: 0;
+        left: 40%;
+        z-index: 3;
+    }
+    &__words__word{
+        letter-spacing: 5vh;
     }
 
     &__start--hidden{

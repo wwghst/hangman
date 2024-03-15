@@ -95,14 +95,52 @@ function carHeadlightActive() {
 }
 
 
+//game words
+
+const words = {
+    colors: ['red', 'green', 'blue', 'yellow', 'purple', 'black', 'white'],
+    animals: ['cat', 'dog', 'bird', 'lion', 'tiger', 'elephant', 'zebra'],
+    jobs: ['engineer', 'doctor', 'teacher', 'nurse', 'chef', 'driver', 'singer'],
+}
+
+let wordKey;
+let keyIndex;
+
+function getRandomWord(arr) {
+    const randomKey = Math.floor(Math.random() * Object.keys(arr).length);
+    const randomKeyIndex = Math.floor(Math.random() * arr[Object.keys(arr)[randomKey]].length);
+
+    wordKey = Object.keys(arr)[randomKey];
+    keyIndex = arr[Object.keys(arr)[randomKey]][randomKeyIndex];
+    console.log(wordKey);
+}
+
+
 
 //game start
 const startButton = document.querySelector('.main__start__button'),
-    startScreen = document.querySelector('.main__start');
+    startScreen = document.querySelector('.main__start'),
+    wordsTittle = document.querySelector('.main__words__tittle'),
+    wordsWord = document.querySelector('.main__words__word'),
+    guyElements = document.querySelectorAll('.main__guy__item');
 
-startButton.addEventListener('click', () => {
-    startScreen.classList.add('main__start--hidden');
+function gameStart(screen) {
+    screen.classList.add('main__start--hidden');
     animateRain();
     audioPlay(rainAudio, carAudio);
     carHeadlightActive();
-})
+    getRandomWord(words)
+
+    wordsTittle.innerText = `${wordKey.toLowerCase()} :`;
+    let word = keyIndex.toLowerCase();
+    let underscores = '_'.repeat(word.length);
+    wordsWord.innerText = underscores;
+    console.log(word);
+    guyElements.forEach((item) => {
+        item.classList.add('hide');
+    })
+}
+
+startButton.addEventListener('click', () => {
+    gameStart(startScreen)
+}) 
