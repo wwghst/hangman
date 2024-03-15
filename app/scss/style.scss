@@ -13,6 +13,46 @@
 .main{
     width: 100%;
 
+    &__start{
+        width: 100%;
+        height: 100vh;
+        backdrop-filter: blur(10px);
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20vh;
+        z-index: 2;
+        transform: all 0.5s;
+    }
+
+    &__start--hidden{
+        display: none;
+    }
+
+    &__start__title{
+        font-weight: 700;
+        font-style: normal;
+        font-size: 15vh;
+        color: rgb(255, 255, 255);
+    }
+
+    &__start__button{
+        background-color: rgb(255, 255, 255);
+        width: 20vh;
+        height: 5vh;
+        border-radius: 10px;
+        border: none;
+        color: rgb(0, 0, 0);
+        cursor: pointer;
+
+        &:hover{
+            box-shadow: 0 0 20px 5px rgb(255, 255, 255);
+        }
+    }
+
+
     &__canvas{
         position: absolute;
         background-size: cover;
@@ -33,7 +73,8 @@
         height: 9px;
         border-radius: 20%;
         box-shadow: 0 0 10px 5px rgb(255, 255, 255);
-        transform: all 1s ease-in-out;
+        transition: all 1s;
+        
     }
     &__car__headlight--right{
         right: 120.9vh;

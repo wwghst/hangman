@@ -60,7 +60,7 @@ function animateRain() {
 
 }
 
-animateRain();
+
 
 
 //audio
@@ -81,12 +81,28 @@ carAudio.src = '../audio/car.mp3';
 carAudio.loop = true;
 carAudio.volume = 1.0;
 
-audioPlay(rainAudio, carAudio);
+
 
 //headlights
 const carHeadlights = document.querySelectorAll('.main__car__headlight');
-const carHeadlightsInterval = setInterval(() => {
-    carHeadlights.forEach(carHeadlight => {
-        carHeadlight.classList.toggle('main__car__headlight--active');
-    })
-}, 3000);
+
+function carHeadlightActive() {
+    setInterval(() => {
+        carHeadlights.forEach(item => {
+            item.classList.toggle('main__car__headlight--active');
+        })
+    }, 3000)
+}
+
+
+
+//game start
+const startButton = document.querySelector('.main__start__button'),
+    startScreen = document.querySelector('.main__start');
+
+startButton.addEventListener('click', () => {
+    startScreen.classList.add('main__start--hidden');
+    animateRain();
+    audioPlay(rainAudio, carAudio);
+    carHeadlightActive();
+})
