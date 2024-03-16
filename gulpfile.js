@@ -70,7 +70,7 @@ function build() {
       "app/css/style.min.css",
       "app/fonts/**/*",
       "app/js/main.min.js",
-      "app/audio//",
+      "app/audio/**/*",
       "app/*.html",
     ],
     { base: "app" }
