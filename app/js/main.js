@@ -86,6 +86,7 @@ const looseAudio = new Audio();
 looseAudio.src = '../audio/loose.mp3';
 looseAudio.volume = 0.9;
 
+
 const wolfAudio = new Audio();
 wolfAudio.src = '../audio/wolf.mp3';
 wolfAudio.volume = 0.9;
@@ -106,7 +107,7 @@ function carHeadlightActive() {
 
 const wolfAudioPlay = setInterval(() => {
     audioPlay(wolfAudio);
-}, 10000)
+}, 17000)
 
 
 //game words
@@ -115,6 +116,7 @@ const words = {
     colors: ['red', 'green', 'blue', 'yellow', 'purple', 'black', 'white'],
     animals: ['cat', 'dog', 'bird', 'lion', 'tiger', 'elephant', 'zebra'],
     jobs: ['engineer', 'doctor', 'teacher', 'nurse', 'chef', 'driver', 'singer'],
+    places: ['park', 'street', 'house', 'building', 'city', 'country', 'forest'],
 }
 
 let wordKey;
@@ -137,11 +139,11 @@ let startButton = document.querySelector('.main__start__button'),
     wordsBox = document.querySelector('.main__words'),
     wordsTittle = document.querySelector('.main__words__tittle'),
     wordsWord = document.querySelector('.main__words__word'),
-    guyElements = document.querySelectorAll('.main__guy__item');
-let wordArr;
-let underscores;
-let word;
-let currentBodyPartIndex = 0;
+    guyElements = document.querySelectorAll('.main__guy__item'),
+    wordArr,
+    underscores,
+    word,
+    currentBodyPartIndex = 0;
 
 function gameStart(screen) {
     screen.classList.add('main__start--hidden');
@@ -155,13 +157,13 @@ function gameStart(screen) {
     underscores = '_'.repeat(word.length);
     wordArr = word.split('');
     wordsWord.innerText = underscores;
-    guyElements.forEach(item => {
-        item.classList.add('hide');
-    })
+
     return wordArr;
 }
 
 document.addEventListener('keydown', (event) => {
+    console.log(event);
+    let keyStart = event.code;
     let pressedKey = event.key.toUpperCase();
     let founds = false;
     wordArr.forEach((letter, index) => {
@@ -173,11 +175,10 @@ document.addEventListener('keydown', (event) => {
             founds = true;
         }
     })
-    if (!founds) {
+    if (!founds && keyStart.startsWith('Key')) {
         audioPlay(looseAudio);
         guyElements[currentBodyPartIndex].classList.remove('hide');
         currentBodyPartIndex = (currentBodyPartIndex + 1);
-        console.log(currentBodyPartIndex);
     }
 
     if (wordsWord.innerText === word) {
