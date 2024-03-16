@@ -1,6 +1,7 @@
 {
   "name": "gulp-start",
   "version": "1.0.0",
+  "homepage": "https://wwghst.github.io/hangman/",
   "description": "",
   "main": "index.js",
   "scripts": {
