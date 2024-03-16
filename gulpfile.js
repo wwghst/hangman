@@ -1,5 +1,6 @@
 const { src, dest, watch, parallel, series } = require("gulp");
-
+const ghPages = require('gh-pages');
+const path = require('path');
 const scss = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const browserSync = require("browser-sync").create();
@@ -7,6 +8,7 @@ const uglify = require("gulp-uglify-es").default;
 const autoprefixer = require("gulp-autoprefixer");
 const imagemin = require("gulp-imagemin");
 const del = require("del");
+
 
 function browsersync() {
   browserSync.init({
@@ -19,6 +21,11 @@ function browsersync() {
 function cleanDist() {
   return del("dist");
 }
+
+function deploy(cb) {
+  ghPages.publish(path.join(process.cwd(), './build'), cb);
+}
+exports.deploy = deploy;
 
 function images() {
   return src("app/img/**/*")
