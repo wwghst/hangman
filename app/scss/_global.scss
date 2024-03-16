@@ -1,7 +1,7 @@
 html,
 body {
 	height: 100%;
-	font-family: Palanquin Dark, sans-serif;
+	font-family: "Jim Nightshade", cursive;
 }
 
 .wrapper {
@@ -25,31 +25,12 @@ body {
 .hide{
   display: none;
 }
-.palanquin {
-	&-dark-regular {
-	font-family: "Palanquin Dark", sans-serif;
+.jim-nightshade-regular {
+	font-family: "Jim Nightshade", cursive;
 	font-weight: 400;
 	font-style: normal;
-	}
-  
-	&-dark-medium {
-		font-family: "Palanquin Dark", sans-serif;
-		font-weight: 500;
-		font-style: normal;
-	  }
-	  
-	  &-dark-semibold {
-		font-family: "Palanquin Dark", sans-serif;
-		font-weight: 600;
-		font-style: normal;
-	  }
-	  
-	  &-dark-bold {
-		font-family: "Palanquin Dark", sans-serif;
-		font-weight: 700;
-		font-style: normal;
-	  }
   }
+  
 
   
 

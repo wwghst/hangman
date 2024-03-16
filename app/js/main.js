@@ -82,6 +82,16 @@ carAudio.loop = true;
 carAudio.volume = 1.0;
 
 
+const looseAudio = new Audio();
+looseAudio.src = '../audio/loose.mp3';
+looseAudio.volume = 0.9;
+
+const wolfAudio = new Audio();
+wolfAudio.src = '../audio/wolf.mp3';
+wolfAudio.volume = 0.9;
+
+
+
 
 //headlights
 const carHeadlights = document.querySelectorAll('.main__car__headlight');
@@ -93,6 +103,10 @@ function carHeadlightActive() {
         })
     }, 3000)
 }
+
+const wolfAudioPlay = setInterval(() => {
+    audioPlay(wolfAudio);
+}, 10000)
 
 
 //game words
@@ -136,8 +150,8 @@ function gameStart(screen) {
     carHeadlightActive();
     getRandomWord(words)
 
-    wordsTittle.innerText = `${wordKey.toLowerCase()} :`;
-    word = keyIndex.toLowerCase();
+    wordsTittle.innerText = `${wordKey.toUpperCase()} :`;
+    word = keyIndex.toUpperCase();
     underscores = '_'.repeat(word.length);
     wordArr = word.split('');
     wordsWord.innerText = underscores;
@@ -148,7 +162,7 @@ function gameStart(screen) {
 }
 
 document.addEventListener('keydown', (event) => {
-    let pressedKey = event.key.toLowerCase();
+    let pressedKey = event.key.toUpperCase();
     let founds = false;
     wordArr.forEach((letter, index) => {
         if (pressedKey === letter) {
@@ -160,6 +174,7 @@ document.addEventListener('keydown', (event) => {
         }
     })
     if (!founds) {
+        audioPlay(looseAudio);
         guyElements[currentBodyPartIndex].classList.remove('hide');
         currentBodyPartIndex = (currentBodyPartIndex + 1);
         console.log(currentBodyPartIndex);
@@ -174,6 +189,7 @@ document.addEventListener('keydown', (event) => {
         wordsBox.style.display = 'none';
         startTittle.innerText = 'YOU LOSE';
         startButton.innerText = 'Play Again';
+        startScreen.classList.add('main__start--loose');
         startScreen.classList.remove('main__start--hidden');
         currentBodyPartIndex = 0;
     }
