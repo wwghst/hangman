@@ -157,6 +157,7 @@ function gameStart(screen) {
     underscores = '_'.repeat(word.length);
     wordArr = word.split('');
     wordsWord.innerText = underscores;
+    guyElements.forEach(item => item.classList.add('hide'));
 
     return wordArr;
 }
