@@ -112,17 +112,22 @@ function getRandomWord(arr) {
 
     wordKey = Object.keys(arr)[randomKey];
     keyIndex = arr[Object.keys(arr)[randomKey]][randomKeyIndex];
-    console.log(wordKey);
 }
 
 
 
 //game start
-const startButton = document.querySelector('.main__start__button'),
+let startButton = document.querySelector('.main__start__button'),
     startScreen = document.querySelector('.main__start'),
+    startTittle = document.querySelector('.main__start__title'),
+    wordsBox = document.querySelector('.main__words'),
     wordsTittle = document.querySelector('.main__words__tittle'),
     wordsWord = document.querySelector('.main__words__word'),
     guyElements = document.querySelectorAll('.main__guy__item');
+let wordArr;
+let underscores;
+let word;
+let currentBodyPartIndex = 0;
 
 function gameStart(screen) {
     screen.classList.add('main__start--hidden');
@@ -132,15 +137,50 @@ function gameStart(screen) {
     getRandomWord(words)
 
     wordsTittle.innerText = `${wordKey.toLowerCase()} :`;
-    let word = keyIndex.toLowerCase();
-    let underscores = '_'.repeat(word.length);
+    word = keyIndex.toLowerCase();
+    underscores = '_'.repeat(word.length);
+    wordArr = word.split('');
     wordsWord.innerText = underscores;
-    console.log(word);
-    guyElements.forEach((item) => {
+    guyElements.forEach(item => {
         item.classList.add('hide');
     })
+    return wordArr;
 }
 
+document.addEventListener('keydown', (event) => {
+    let pressedKey = event.key.toLowerCase();
+    let founds = false;
+    wordArr.forEach((letter, index) => {
+        if (pressedKey === letter) {
+            underscores = underscores.split('');
+            underscores[index] = letter;
+            underscores = underscores.join('');
+            wordsWord.innerText = underscores;
+            founds = true;
+        }
+    })
+    if (!founds) {
+        guyElements[currentBodyPartIndex].classList.remove('hide');
+        currentBodyPartIndex = (currentBodyPartIndex + 1);
+        console.log(currentBodyPartIndex);
+    }
+
+    if (wordsWord.innerText === word) {
+        gameStart(startScreen);
+        currentBodyPartIndex = 0;
+    }
+
+    if (currentBodyPartIndex === 6) {
+        wordsBox.style.display = 'none';
+        startTittle.innerText = 'YOU LOSE';
+        startButton.innerText = 'Play Again';
+        startScreen.classList.remove('main__start--hidden');
+        currentBodyPartIndex = 0;
+    }
+})
+
+
 startButton.addEventListener('click', () => {
-    gameStart(startScreen)
-}) 
+    gameStart(startScreen);
+    wordsBox.style.display = 'flex';
+})
