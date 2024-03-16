@@ -71,24 +71,24 @@ function audioPlay(...audio) {
 }
 
 const rainAudio = new Audio();
-rainAudio.src = '../audio/rain.mp3';
+rainAudio.src = 'audio/rain.mp3';
 rainAudio.loop = true;
 rainAudio.volume = 0.6;
 
 
 const carAudio = new Audio();
-carAudio.src = '../audio/car.mp3';
+carAudio.src = 'audio/car.mp3';
 carAudio.loop = true;
 carAudio.volume = 1.0;
 
 
 const looseAudio = new Audio();
-looseAudio.src = '../audio/loose.mp3';
+looseAudio.src = 'audio/loose.mp3';
 looseAudio.volume = 0.9;
 
 
 const wolfAudio = new Audio();
-wolfAudio.src = '../audio/wolf.mp3';
+wolfAudio.src = 'audio/wolf.mp3';
 wolfAudio.volume = 0.9;
 
 
