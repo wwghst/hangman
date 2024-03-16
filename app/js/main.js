@@ -151,6 +151,9 @@ function gameStart(screen) {
     audioPlay(rainAudio, carAudio);
     carHeadlightActive();
     getRandomWord(words)
+    guyElements.forEach((item) => {
+        item.classList.add('hide');
+    })
 
     wordsTittle.innerText = `${wordKey.toUpperCase()} :`;
     word = keyIndex.toUpperCase();
